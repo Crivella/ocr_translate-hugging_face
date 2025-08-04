@@ -13,24 +13,119 @@ readme = "README.md"
 license = { file = "LICENSE.txt" }
 classifiers = [
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 keywords = ["django", "translation"]
-requires-python = ">=3.10"
+requires-python = ">=3.12"
+# -e git+ssh://git@github.com/Crivella/ocr_translate-hugging_face.git@c597e8372a89d1c3d163340e44415c5d66ecd116#egg=ocr_translate_hugging_face
+#   -e git+ssh://git@github.com/Crivella/ocr_translate.git@bb919d6c7425544549999a6fb509c83ccad1801f#egg=django_ocr_translate
+#     wheel==0.45.1
+#     numpy==2.2.6
+#     Django==5.2.4
+#       asgiref==3.9.1
+#       sqlparse==0.5.3
+#       tzdata==2025.2
+#     django-cors-headers==4.7.0
+#       asgiref==3.9.1
+#       Django==5.2.4
+#         asgiref==3.9.1
+#         sqlparse==0.5.3
+#         tzdata==2025.2
+#     pillow==11.3.0
+#     opencv-python-headless==4.12.0.88
+#       numpy==2.2.6
+#   opencv-python-headless==4.12.0.88
+#     numpy==2.2.6
+#   torch==2.7.1
+#     filelock==3.18.0
+#     typing_extensions==4.14.1
+#     sympy==1.14.0
+#       mpmath==1.3.0
+#     networkx==3.5
+#     Jinja2==3.1.6
+#       MarkupSafe==3.0.2
+#     fsspec==2025.7.0
+#     setuptools==80.9.0
+#   torchvision==0.22.1
+#     numpy==2.2.6
+#     torch==2.7.1
+#       filelock==3.18.0
+#       typing_extensions==4.14.1
+#       sympy==1.14.0
+#         mpmath==1.3.0
+#       networkx==3.5
+#       Jinja2==3.1.6
+#         MarkupSafe==3.0.2
+#       fsspec==2025.7.0
+#       setuptools==80.9.0
+#     pillow==11.3.0
+#   transformers==4.54.1
+#     filelock==3.18.0
+#     huggingface-hub==0.34.3
+#       filelock==3.18.0
+#       fsspec==2025.7.0
+#       packaging==25.0
+#       PyYAML==6.0.2
+#       requests==2.32.4
+#         charset-normalizer==3.4.2
+#         idna==3.10
+#         urllib3==2.5.0
+#         certifi==2025.7.14
+#       tqdm==4.67.1
+#         colorama==0.4.6
+#       typing_extensions==4.14.1
+#     numpy==2.2.6
+#     packaging==25.0
+#     PyYAML==6.0.2
+#     regex==2025.7.34
+#     requests==2.32.4
+#       charset-normalizer==3.4.2
+#       idna==3.10
+#       urllib3==2.5.0
+#       certifi==2025.7.14
+#     tokenizers==0.21.4
+#       huggingface-hub==0.34.3
+#         filelock==3.18.0
+#         fsspec==2025.7.0
+#         packaging==25.0
+#         PyYAML==6.0.2
+#         requests==2.32.4
+#           charset-normalizer==3.4.2
+#           idna==3.10
+#           urllib3==2.5.0
+#           certifi==2025.7.14
+#         tqdm==4.67.1
+#           colorama==0.4.6
+#         typing_extensions==4.14.1
+#     safetensors==0.5.3
+#     tqdm==4.67.1
+#       colorama==0.4.6
+#   protobuf==6.31.1
+#   fugashi==1.5.1
+#   unidic-lite==1.0.8
+#   sacremoses==0.1.1
+#     regex==2025.7.34
+#     click==8.2.1
+#       colorama==0.4.6
+#     joblib==1.5.1
+#     tqdm==4.67.1
+#       colorama==0.4.6
+#   safetensors==0.5.3
 dependencies = [
-    "django-ocr_translate>=0.5.0,<1.0",
-    "opencv-python-headless~=4.8.0.74",
+    "django-ocr_translate>=0.7.0,<1.0",
 
-    "torch~=2.2.1",
-    "torchvision~=0.17.1",
+    "torch~=2.7.1",
+    "torchvision~=0.22.1",
+    "transformers~4.54.1",
 
-    "transformers~=4.30.2",
-    "protobuf~=3.20.0", # microsoft/trocr-small-printed: XLMRobertaConverter requires the protobuf library
-    "fugashi~=1.2.1",
+    "protobuf~=6.31.1", # microsoft/trocr-small-printed: XLMRobertaConverter requires the protobuf library
+    "fugashi~=1.5.1",
     "unidic-lite~=1.0.8",
-    "sacremoses~=0.0.53",
-    "safetensors~=0.3.1",
-    "sentencepiece~=0.1.99",
+    "sacremoses~=0.1.1",
+    "safetensors~=0.5.3",
+    # Needs `cmake` and `compiler` to be installed with newer python
+    # "sentencepiece",  # Needed for most HuggingFace tokenizers
 ]
 
 [project.urls]
@@ -43,13 +138,13 @@ release = [
 tests = [
     "pytest",
     "pytest-cov",
-    "pytest-django~=4.5.2",
+    "pytest-django",
 ]
 pre-commit = [
-    "pre-commit~=3.3.3",
-    "pylint~=2.17.4",
-    "pylint-pytest~=1.1.2",
-    "pylint-django~=2.5.3",
+    "pre-commit",
+    "pylint",
+    "pylint-pytest",
+    "pylint-django",
 ]
 
 [project.entry-points."ocr_translate.ocr_data"]
@@ -86,7 +181,7 @@ exclude = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 DJANGO_SETTINGS_MODULE = "settings"
-log_cli = 1
+log_cli = true
 pythonpath = ["./tests"]
 
 [tool.pylint.main]
