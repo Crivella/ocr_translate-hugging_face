@@ -117,16 +117,17 @@ helsinki_zh_en_tsl_model_data = {
     'entrypoint': 'hugginface.seq2seq'
 }
 
-staka_fugumt_ja_en_tsl_model_data = {
-    'name': 'staka/fugumt-ja-en',
-    'lang_src': ['ja'],
-    'lang_dst': ['en'],
-    'lang_code': 'iso1',
-    'default_options': {
-        'break_newlines': True
-    },
-    'entrypoint': 'hugginface.seq2seq'
-}
+# Removed due to https://github.com/huggingface/transformers/issues/24657#issuecomment-3303054186
+# staka_fugumt_ja_en_tsl_model_data = {
+#     'name': 'staka/fugumt-ja-en',
+#     'lang_src': ['ja'],
+#     'lang_dst': ['en'],
+#     'lang_code': 'iso1',
+#     'default_options': {
+#         'break_newlines': True
+#     },
+#     'entrypoint': 'hugginface.seq2seq'
+# }
 
 facebook_m2m100_418m_tsl_model_data = {
     'name': 'facebook/m2m100_418M',
