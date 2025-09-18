@@ -129,6 +129,19 @@ helsinki_zh_en_tsl_model_data = {
 #     'entrypoint': 'hugginface.seq2seq'
 # }
 
+# Tested with transformers 4.56.1 but not great results. When it translates it is decent, but often
+# if just outputs the romanization (or something close) of the japanese text.
+# mitsua_ja_en_tsl_model_data = {
+#     'name': 'Mitsua/elan-mt-bt-ja-en',
+#     'lang_src': ['ja'],
+#     'lang_dst': ['en'],
+#     'lang_code': 'iso1',
+#     'default_options': {
+#         'break_newlines': True
+#     },
+#     'entrypoint': 'hugginface.seq2seq'
+# }
+
 facebook_m2m100_418m_tsl_model_data = {
     'name': 'facebook/m2m100_418M',
     'lang_src': [
@@ -180,3 +193,30 @@ facebook_m2m100_1_2b_tsl_model_data = {
         'zht': 'zh'
     }
 }
+
+# facebook/nllb-200-distilled-600M
+# facebook_nllb_600m_tsl_model_data = {
+#     'name': 'facebook/nllb-200-distilled-600M',
+#     'lang_src': [
+#         'af', 'am', 'ar', 'az', 'ba', 'be', 'bg', 'bn', 'br', 'bs', 'cs', 'cy', 'da', 'de', 'en', 'et', 'fa','ff',
+#         'fi', 'fr', 'fy', 'ga', 'gl', 'gu', 'ha', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'ig', 'is', 'it', 'ja', 'jv',
+#         'ka', 'kk', 'km', 'kn', 'ko', 'lg', 'ln', 'lo', 'lt', 'lv', 'mg', 'mk', 'ml', 'mn', 'mr', 'ms', 'my', 'ne',
+#         'no', 'oc', 'or', 'pl', 'pt', 'ru', 'sd', 'sk', 'sl', 'so', 'sq', 'sr', 'ss', 'su', 'sv', 'sw', 'ta', 'th',
+#         'tl', 'tn', 'tr', 'uk', 'ur', 'uz', 'vi', 'wo', 'xh', 'yi', 'yo', 'zh', 'zht', 'zu'
+#         ],
+#     'lang_dst': [
+#         'af', 'am', 'ar', 'az', 'ba', 'be', 'bg', 'bn', 'br', 'bs', 'cs', 'cy', 'da', 'de', 'en', 'et', 'fa','ff',
+#         'fi', 'fr', 'fy', 'ga', 'gl', 'gu', 'ha', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'ig', 'is', 'it', 'ja', 'jv',
+#         'ka', 'kk', 'km', 'kn', 'ko', 'lg', 'ln', 'lo', 'lt', 'lv', 'mg', 'mk', 'ml', 'mn', 'mr', 'ms', 'my', 'ne',
+#         'no', 'oc', 'or', 'pl', 'pt', 'ru', 'sd', 'sk', 'sl', 'so', 'sq', 'sr', 'ss', 'su', 'sv', 'sw', 'ta', 'th',
+#         'tl', 'tn', 'tr', 'uk', 'ur', 'uz', 'vi', 'wo', 'xh', 'yi', 'yo', 'zh', 'zht', 'zu'
+#         ],
+#     'lang_code': 'iso1',
+#     'default_options': {
+#         'break_newlines': False
+#     },
+#     'entrypoint': 'hugginface.seq2seq',
+#     'iso1_map': {
+#         'zht': 'zh'
+#     }
+# }
