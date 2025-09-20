@@ -9,7 +9,8 @@ repos:
                     tests/.*fixtures|
                     .*/migrations/.*|
                     .*\.json|
-                    .*\.txt
+                    .*\.txt|
+                    tokenization_small100\.py
                 )$
           - id: mixed-line-ending
           - id: trailing-whitespace

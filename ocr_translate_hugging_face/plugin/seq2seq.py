@@ -23,6 +23,7 @@ import torch
 from ocr_translate import models as m
 from transformers import M2M100Tokenizer
 
+from .tokenization_small100 import SMALL100Tokenizer
 from .utils import EnvMixin, Loaders
 
 logger = logging.getLogger('plugin')
@@ -126,7 +127,10 @@ class HugginfaceSeq2SeqModel(m.TSLModel, EnvMixin):
         if len(tokens) == 0:
             return ''
 
-        self.tokenizer.src_lang = src_lang
+        if isinstance(self.tokenizer, SMALL100Tokenizer):
+            self.tokenizer.tgt_lang = dst_lang
+        else:
+            self.tokenizer.src_lang = src_lang
         encoded = self.tokenizer(
             tokens,
             return_tensors='pt',

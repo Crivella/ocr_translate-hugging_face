@@ -220,3 +220,25 @@ facebook_m2m100_1_2b_tsl_model_data = {
 #         'zht': 'zh'
 #     }
 # }
+
+# https://huggingface.co/alirezamsh/small100
+small100_model_data = {
+    'name': 'alirezamsh/small100',
+    'lang_src': [
+        'af', 'am', 'ar', 'az', 'ba', 'be', 'bg', 'bn', 'br', 'bs', 'cs', 'cy', 'da', 'de', 'el', 'en', 'es', 'et',
+        'fa', 'ff', 'fi', 'fr', 'fy', 'ga', 'gl', 'gu', 'ha', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'ig', 'is', 'it',
+        'ja', 'jv', 'ka', 'kk', 'km', 'kn', 'ko', 'lg', 'ln', 'lo', 'lt', 'lv', 'mg', 'mk', 'ml', 'mn', 'mr', 'ms',
+        'my', 'ne', 'no', 'or', 'pl', 'pt', 'ru', 'sd', 'sk', 'sl', 'so', 'sq', 'sr', 'ss', 'su', 'sv', 'sw', 'ta',
+        'th', 'tl', 'tn', 'tr', 'uk', 'ur', 'uz', 'vi', 'wo', 'xh', 'yi', 'yo', 'zh', 'zht', 'zu'],
+    'lang_dst': [
+        'af', 'am', 'ar', 'az', 'ba', 'be', 'bg', 'bn', 'br', 'bs', 'cs', 'cy', 'da', 'de', 'el', 'en', 'es', 'et',
+        'fa', 'ff', 'fi', 'fr', 'fy', 'ga', 'gl', 'gu', 'ha', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'ig', 'is', 'it',
+        'ja', 'jv', 'ka', 'kk', 'km', 'kn', 'ko', 'lg', 'ln', 'lo', 'lt', 'lv', 'mg', 'mk', 'ml', 'mn', 'mr', 'ms',
+        'my', 'ne', 'no', 'or', 'pl', 'pt', 'ru', 'sd', 'sk', 'sl', 'so', 'sq', 'sr', 'ss', 'su', 'sv', 'sw', 'ta',
+        'th', 'tl', 'tn', 'tr', 'uk', 'ur', 'uz', 'vi', 'wo', 'xh', 'yi', 'yo', 'zh', 'zht', 'zu'],
+    'lang_code': 'iso1',
+    'iso1_map': {
+        'zht': 'zh'
+    },
+    'entrypoint': 'hugginface.seq2seq'
+}
