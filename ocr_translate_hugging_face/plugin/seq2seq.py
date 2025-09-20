@@ -22,6 +22,8 @@ import logging
 import torch
 from ocr_translate import models as m
 from transformers import M2M100Tokenizer
+from transformers.models.nllb.tokenization_nllb import NllbTokenizer
+from transformers.models.nllb.tokenization_nllb_fast import NllbTokenizerFast
 
 from .tokenization_small100 import SMALL100Tokenizer
 from .utils import EnvMixin, Loaders
@@ -136,7 +138,7 @@ class HugginfaceSeq2SeqModel(m.TSLModel, EnvMixin):
             return_tensors='pt',
             padding=True,
             truncation=True,
-            is_split_into_words=True
+            is_split_into_words=True,
             )
         ntok = encoded['input_ids'].shape[1]
         encoded.to(self.dev)
@@ -148,6 +150,8 @@ class HugginfaceSeq2SeqModel(m.TSLModel, EnvMixin):
         }
         if isinstance(self.tokenizer, M2M100Tokenizer):
             kwargs['forced_bos_token_id'] = self.tokenizer.get_lang_id(dst_lang)
+        elif isinstance(self.tokenizer, (NllbTokenizer, NllbTokenizerFast)):
+            kwargs['forced_bos_token_id'] = self.tokenizer.convert_tokens_to_ids(dst_lang)
 
         logger.debug(f'TSL ENCODED: {encoded}')
         logger.debug(f'TSL KWARGS: {kwargs}')

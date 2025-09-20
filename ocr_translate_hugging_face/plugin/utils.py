@@ -89,6 +89,7 @@ class Loaders():
             cls = Loaders._load(model_cls, model_id, root)
             if cls is None:
                 raise ValueError(f'Could not load model: {model_id}')
+            logger.debug(f'Loaded `{r}`: {type(cls)}')
 
             if r in Loaders.accept_device:
                 cls = cls.to(dev)
