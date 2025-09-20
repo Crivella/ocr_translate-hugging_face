@@ -3,15 +3,16 @@ repos:
       rev: v4.1.0
       hooks:
           - id: double-quote-string-fixer
-          - id: end-of-file-fixer
             exclude: &exclude >-
                 (?x)^(
                     tests/.*fixtures|
                     .*/migrations/.*|
                     .*\.json|
                     .*\.txt|
-                    tokenization_small100\.py
+                    .*/tokenization_small100\.py
                 )$
+          - id: end-of-file-fixer
+            exclude: *exclude
           - id: mixed-line-ending
           - id: trailing-whitespace
             exclude: *exclude
