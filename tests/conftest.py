@@ -86,7 +86,9 @@ def ved_model(language):
         'entrypoint': 'hugginface.ved'
     }
 
-    return hugginface.HugginfaceVEDModel(**model_dict)
+    res = hugginface.HugginfaceVEDModel(**model_dict)
+    res.DISABLE_LOAD_EVENTS = True
+    return res
 
 @pytest.fixture()
 def s2s_model(language):
@@ -97,9 +99,9 @@ def s2s_model(language):
         'entrypoint': 'hugginface.seq2seq'
     }
 
-    return hugginface.HugginfaceSeq2SeqModel(**model_dict)
-
-
+    res = hugginface.HugginfaceSeq2SeqModel(**model_dict)
+    res.DISABLE_LOAD_EVENTS = True
+    return res
 
 @pytest.fixture
 def mock_loader(monkeypatch):
@@ -114,7 +116,8 @@ def mock_loader(monkeypatch):
             elif isinstance(model_id, str):
                 if cache_dir is None:
                     cache_dir = EnvMixin().root
-                if not (cache_dir / f'models--{model_id.replace("/", "--")}').is_dir():
+                model_sanitized = model_id.replace('/', '--')
+                if not (cache_dir / f'models--{model_sanitized}').is_dir():
                     raise FileNotFoundError('Not in cache')
 
             class A(): # pylint: disable=invalid-name

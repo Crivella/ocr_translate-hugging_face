@@ -26,6 +26,8 @@ from transformers import (AutoImageProcessor, AutoModel, AutoModelForSeq2SeqLM,
                           AutoModelForZeroShotImageClassification,
                           AutoTokenizer, VisionEncoderDecoderModel)
 
+from .tokenization_small100 import SMALL100Tokenizer
+
 logger = logging.getLogger('plugin')
 
 class Loaders():
@@ -39,6 +41,12 @@ class Loaders():
         'image_processor': AutoImageProcessor,
         'seq2seq': AutoModelForSeq2SeqLM,
         'zsic_model': AutoModelForZeroShotImageClassification
+    }
+
+    model_overrides = {
+        'alirezamsh/small100': {
+            'tokenizer': SMALL100Tokenizer
+        }
     }
 
     @staticmethod
@@ -76,9 +84,12 @@ class Loaders():
         for r in request:
             if r not in Loaders.mapping:
                 raise ValueError(f'Unknown request: {r}')
-            cls = Loaders._load(Loaders.mapping[r], model_id, root)
+            model_cls = Loaders.mapping[r]
+            model_cls = Loaders.model_overrides.get(model_id, {}).get(r, model_cls)
+            cls = Loaders._load(model_cls, model_id, root)
             if cls is None:
                 raise ValueError(f'Could not load model: {model_id}')
+            logger.debug(f'Loaded `{r}`: {type(cls)}')
 
             if r in Loaders.accept_device:
                 cls = cls.to(dev)

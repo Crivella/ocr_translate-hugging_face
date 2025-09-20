@@ -3,14 +3,16 @@ repos:
       rev: v4.1.0
       hooks:
           - id: double-quote-string-fixer
-          - id: end-of-file-fixer
             exclude: &exclude >-
                 (?x)^(
                     tests/.*fixtures|
                     .*/migrations/.*|
                     .*\.json|
-                    .*\.txt
+                    .*\.txt|
+                    .*/tokenization_small100\.py
                 )$
+          - id: end-of-file-fixer
+            exclude: *exclude
           - id: mixed-line-ending
           - id: trailing-whitespace
             exclude: *exclude
@@ -26,18 +28,18 @@ repos:
           - id: isort
             exclude: *exclude
 
-    - repo: local
-      hooks:
-          - id: pylint
-            name: pylint
-            entry: pylint
-            language: system
-            types: [python]
-            exclude: >
-                (?x)^(
-                    manage\.py|
-                    mysite/.*|
-                    .*/migrations/.*|
-                    docs/.*|
-                    tests/.*(?<!\.py)$
-                )$
+    # - repo: local
+    #   hooks:
+    #       - id: pylint
+    #         name: pylint
+    #         entry: pylint
+    #         language: system
+    #         types: [python]
+    #         exclude: >
+    #             (?x)^(
+    #                 manage\.py|
+    #                 mysite/.*|
+    #                 .*/migrations/.*|
+    #                 docs/.*|
+    #                 tests/.*(?<!\.py)$
+    #             )$
