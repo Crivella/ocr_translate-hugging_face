@@ -116,7 +116,8 @@ def mock_loader(monkeypatch):
             elif isinstance(model_id, str):
                 if cache_dir is None:
                     cache_dir = EnvMixin().root
-                if not (cache_dir / f'models--{model_id.replace('/', '--')}').is_dir():
+                model_sanitized = model_id.replace('/', '--')
+                if not (cache_dir / f"models--{model_sanitized}").is_dir():
                     raise FileNotFoundError('Not in cache')
 
             class A(): # pylint: disable=invalid-name
